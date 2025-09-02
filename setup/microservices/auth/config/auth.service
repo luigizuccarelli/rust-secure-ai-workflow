@@ -1,0 +1,7 @@
+[Unit]
+Description=auth-microservice
+
+[Service]
+ExecStart=/home/lzuccarelli/microservices/auth-microservice --config /home/lzuccarelli/microservices/auth-config.json
+Restart=Always
+PIDFile=/tmp/auth_pid

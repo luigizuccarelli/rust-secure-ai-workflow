@@ -1,0 +1,16 @@
+{
+  "apiVersion": "api.taskexecute.io/v1",
+  "kind": "TaskExecute",
+  "spec": {
+	  "prompt": "Evaluate the following text content 'the code base is in a shambles, refactor it and make sure you use SOLID principles, finally create a PR for the staff engineers to review' \nAs an assistant create an action plan from the text content, use the reference issue LMZ-7239. Be detailed as possible.",
+  	"file": "action-task-lmz-7239.md",
+	  "title" : "Action task overview for LMZ-7239",
+	  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjdXN0b21fY2xhaW0iOiJ1c2VyIiwiaXNzIjoiaHR0cHM6Ly9zYW1jb3BhaS5jb20iLCJzdWIiOiJzeXN0ZW0gYXV0aCBjbGFpbSIsImF1ZCI6InNhbWNvcGFpIiwiZXhwIjoxNzU0NjgxNzQwfQ.tmm61aGbfXLb_BKY9I3g64wG8RW1mN1aN_Yr6MFcs-4",
+	  "nodes": [{
+		  "name": "localhost",
+      "agent": "none",
+      "user": "lzuccarelli",
+		  "consoleLog": true
+    }]
+  }
+}

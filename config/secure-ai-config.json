@@ -1,0 +1,16 @@
+{
+	"name": "rust-secure-ai-workflow",
+	"description": "a secure generic script executor for ai workflows",
+	"port": "1335",
+	"log_level": "debug",
+	"certs_dir": "./certs",
+	"cert_mode": "file",
+	"agents": {
+		"gemini-ai-agent": "./scripts/gemini-ai-execute.sh",
+		"simple-ai": "./scripts/simple-ai.sh",
+		"document-index-agent": "./scripts/document-index-execute.sh",
+		"stocks-alert": "./scripts/sec-gov-stock.sh",
+		"token": "./scripts/get-token.sh",
+		"kv-store": "./scripts/kv-store.sh"
+	}
+}

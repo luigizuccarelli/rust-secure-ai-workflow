@@ -1,0 +1,7 @@
+[Unit]
+Description=ai-workflow-microservice
+
+[Service]
+ExecStart=/home/lzuccarelli/microservices/ai-workflow-microservice --config /home/lzuccarelli/microservices/ai-workflow-config.json
+Restart=Always
+PIDFile=/tmp/ai-workflow_pid
