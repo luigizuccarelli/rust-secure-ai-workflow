@@ -1,8 +1,0 @@
-{
-	"name": "ai-workflow-microservice",
-	"description": "Used to ensure secure launch of ai workloads and other services",
-	"port": "1336",
-	"certs_dir": "/home/lzuccarelli/certs",
-	"cert_mode": "file",
-	"log_level": "debug",
-}
