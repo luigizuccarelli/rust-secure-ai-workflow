@@ -1,4 +1,5 @@
 target/
-./certs/*
+certs/
 logs/
 results/
+
