@@ -1,0 +1,7 @@
+[Unit]
+Description=secure-ai-workflow-service
+
+[Service]
+ExecStart=/home/lzuccarelli/services/secure-ai-workflow-service --config /home/lzuccarelli/services/secure-ai-workflow-config.json
+Restart=Always
+PIDFile=/tmp/secure-ai-workflow_service_pid
