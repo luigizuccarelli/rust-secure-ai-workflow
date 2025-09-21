@@ -49,9 +49,9 @@ clone_build_service() {
     ssh-add ~/.ssh/id_ed25519-lz
     if [ "${CLEAN}" == "true" ];
     then
-      ssh -i "${PK}" "${USER}@${host}" -tA "mkdir -p /home/${USER}/Projects && rm -rf /home/${USER}/Projects/${REPO_NAME} && cd /home/${USER}/Projects && git clone ${REPO} && cd ${REPO_NAME} && make build"
+      ssh -i "${PK}" "${USER}@${host}" -tA "rm -rf /home/${USER}/Projects/${REPO_NAME} && cd /home/${USER}/Projects && git clone ${REPO} && cd ${REPO_NAME} && make build"
     else 
-      ssh -i "${PK}" "${USER}@${host}" -tA "cd /home/lzuccarelli/Projects/${REPO_NAME} && git pull origin main --rebase && make build"
+      ssh -i "${PK}" "${USER}@${host}" -tA "cd /home/lzuccarelli/Projects/${REPO_NAME} && rm -rf target/release/*secure* && git pull origin main --rebase && make build"
     fi
   done
 }
@@ -60,7 +60,7 @@ deploy_service() {
   HOSTS=("george")
   for host in "${HOSTS[@]}"; do
     scp -i "${PK}" config/* "${USER}@${host}:/home/${USER}/services"
-    ssh -i "${PK}" "${USER}@${host}" -t "cp /home/${USER}/Projects/${REPO_NAME}/target/release/${REPO_NAME} /home/${USER}/services/${MS}-service"
+    ssh -i "${PK}" "${USER}@${host}" -t "cp /home/${USER}/Projects/${REPO_NAME}/target/release/${MS} /home/${USER}/services/${MS}-service"
     ssh -i "${PK}" "${USER}@${host}" -t "sudo cp /home/${USER}/services/${MS}.service /etc/systemd/system/"
   done
 }

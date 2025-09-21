@@ -1,6 +1,6 @@
 [package]
-name = "ai-workflow-microservice"
-version = "0.4.3"
+name = "secure-ai-workflow"
+version = "0.4.4"
 authors = ["Luigi Mario Zuccarelli<>luigizuccarelli@gmail.com"]
 edition = "2021"
 
