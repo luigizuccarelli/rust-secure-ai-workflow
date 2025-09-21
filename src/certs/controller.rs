@@ -44,15 +44,15 @@ impl CertificateInterface for ImplCertificateInterface {
 }
 
 fn load_public_key(dir: String) -> io::Result<Vec<CertificateDer<'static>>> {
-    let certfile = fs::File::open(dir)
-        .map_err(|e| error(format!("failed to open {}: {}", "./certs/ssl.cert", e)))?;
+    let certfile = fs::File::open(dir.clone())
+        .map_err(|e| error(format!("[load_public_key] {} : {}", dir, e)))?;
     let mut reader = io::BufReader::new(certfile);
     rustls_pemfile::certs(&mut reader).collect()
 }
 
 fn load_private_key(dir: String) -> io::Result<PrivateKeyDer<'static>> {
-    let keyfile = fs::File::open(dir)
-        .map_err(|e| error(format!("failed to open {}: {}", "./certs/ssl.key", e)))?;
+    let keyfile = fs::File::open(dir.clone())
+        .map_err(|e| error(format!("[load_private_key] {} : {}", dir, e)))?;
     let mut reader = io::BufReader::new(keyfile);
     rustls_pemfile::private_key(&mut reader).map(|key| key.unwrap())
 }

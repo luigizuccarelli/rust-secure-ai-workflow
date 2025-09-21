@@ -5,10 +5,11 @@
 	  "prompt": "Evaluate the following text content 'the code base is in a shambles, refactor it and make sure you use SOLID principles, finally create a PR for the staff engineers to review' \nAs an assistant create an action plan from the text content, use the reference issue LMZ-7239. Be detailed as possible.",
   	"file": "action-task-lmz-7239.md",
 	  "title" : "Action task overview for LMZ-7239",
-	  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJjdXN0b21fY2xhaW0iOiJ1c2VyIiwiaXNzIjoiaHR0cHM6Ly9zYW1jb3BhaS5jb20iLCJzdWIiOiJzeXN0ZW0gYXV0aCBjbGFpbSIsImF1ZCI6InNhbWNvcGFpIiwiZXhwIjoxNzU0NjgxNzQwfQ.tmm61aGbfXLb_BKY9I3g64wG8RW1mN1aN_Yr6MFcs-4",
+	  "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyIjoibHp1Y2NhcmVsbGkiLCJpc3MiOiJodHRwczovL2FpLXdvcmtmbG93Iiwic3ViIjoic3lzdGVtIGF1dGggY2xhaW0iLCJhdWQiOiJhaS13b3JrZmxvdyIsImV4cCI6MTc1ODIwMDQyMX0.knjCqsF0l8aX_O1hx-6sA8lZPQWKP2su_9x0qR36FnQ",
 	  "nodes": [{
 		  "name": "localhost",
-      "agent": "none",
+      "agent": "simple-ai",
+      "args": ["--config","/home/lzuccarelli/services/simple-ai-agent-config.json"],
       "user": "lzuccarelli",
 		  "consoleLog": true
     }]

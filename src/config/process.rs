@@ -10,6 +10,9 @@ pub struct Parameters {
     pub log_level: String,
     pub certs_dir: Option<String>,
     pub cert_mode: String,
+    pub db_path: String,
+    pub token_url: String,
+    pub agent_url: String,
     pub agents: HashMap<String, String>,
 }
 

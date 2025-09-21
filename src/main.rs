@@ -1,6 +1,6 @@
 use crate::certs::controller::{error, CertificateInterface, ImplCertificateInterface};
 use crate::config::process::{ConfigInterface, ImplConfigInterface, Parameters};
-use crate::httpservices::server::process;
+use crate::service::service::task_service;
 use clap::Parser;
 use custom_logger as log;
 use hyper::service::service_fn;
@@ -19,10 +19,10 @@ use tokio_rustls::TlsAcceptor;
 
 mod api;
 mod certs;
-mod command;
 mod config;
 mod error;
-mod httpservices;
+mod handlers;
+mod service;
 
 /// cli struct
 #[derive(Parser, Debug)]
@@ -42,11 +42,6 @@ static MAP_LOOKUP: Mutex<Option<HashMap<String, String>>> = Mutex::new(None);
 
 fn main() {
     let args = Cli::parse();
-    // we dont want to panic so ignore errors
-    let _ = fs::create_dir_all("logs");
-    let _ = fs::create_dir_all("staging");
-    let _ = fs::create_dir_all("results");
-
     log::Logging::new()
         .with_level(log::LevelFilter::Info)
         .init()
@@ -66,6 +61,10 @@ fn main() {
         "certs_dir".to_string(),
         parameters.certs_dir.as_ref().unwrap().to_string(),
     );
+    hm.insert("db_path".to_string(), parameters.db_path.to_string());
+    hm.insert("token_url".to_string(), parameters.token_url.to_string());
+    hm.insert("agent_url".to_string(), parameters.agent_url.to_string());
+
     for (k, v) in parameters.agents.iter() {
         hm.insert(k.to_string(), v.to_string());
     }
@@ -83,6 +82,10 @@ fn main() {
     // setup logging
     // avoid log panic
     let _ = log::Logging::new().with_level(level).init();
+
+    log::info!("application : {}", env!("CARGO_PKG_NAME"));
+    log::info!("author      : {}", env!("CARGO_PKG_AUTHORS"));
+    log::info!("version     : {}", env!("CARGO_PKG_VERSION"));
 
     // clean up semaphore
     if Path::new("semaphore.pid").exists() {
@@ -115,7 +118,7 @@ async fn run_server(params: Parameters) -> Result<(), Box<dyn std::error::Error 
         .map_err(|e| error(e.to_string()))?;
     server_config.alpn_protocols = vec![b"h2".to_vec(), b"http/1.1".to_vec(), b"http/1.0".to_vec()];
     let tls_acceptor = TlsAcceptor::from(Arc::new(server_config));
-    let service = service_fn(process);
+    let service = service_fn(task_service);
 
     loop {
         let (tcp_stream, _remote_addr) = incoming.accept().await?;

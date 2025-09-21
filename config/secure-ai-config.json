@@ -1,16 +1,18 @@
 {
 	"name": "rust-secure-ai-workflow",
 	"description": "a secure generic script executor for ai workflows",
-	"port": "1335",
+	"port": "1338",
 	"log_level": "debug",
-	"certs_dir": "./certs",
+	"certs_dir": "/home/lzuccarelli/certs",
 	"cert_mode": "file",
+	"db_path" :"/home/lzuccarelli/database",
+	"token_url" : "https://vinnie/auth/token",
+	"agent_url": "https://vinnie/agent/execute-agent",
 	"agents": {
-		"gemini-ai-agent": "./scripts/gemini-ai-execute.sh",
-		"simple-ai": "./scripts/simple-ai.sh",
-		"document-index-agent": "./scripts/document-index-execute.sh",
-		"stocks-alert": "./scripts/sec-gov-stock.sh",
-		"token": "./scripts/get-token.sh",
-		"kv-store": "./scripts/kv-store.sh"
+		"simple-ai-agent": "/home/lzuccarelli/services/rust-simple-agent",
+		"gemini-ai-agent": "/home/lzuccarelli/services/gemini-ai-agent",
+		"llama3b-ai-agent": "/home/lzuccarelli/services/llama3b-ai-agent",
+		"rust-coding-agent": "/home/lzuccarelli/services/rust-coding-agent",
+		"demo-agent": "/home/lzuccarelli/services/demo-agent",
 	}
 }
