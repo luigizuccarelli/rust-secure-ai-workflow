@@ -13,6 +13,6 @@
 		"gemini-ai-agent": "/home/lzuccarelli/services/gemini-ai-agent",
 		"llama3b-ai-agent": "/home/lzuccarelli/services/llama3b-ai-agent",
 		"rust-coding-agent": "/home/lzuccarelli/services/rust-coding-agent",
-		"demo-agent": "/home/lzuccarelli/lzuccarelli/demo-agent",
+		"demo-agent": "/home/lzuccarelli/lzuccarelli/demo-agent"
 	}
 }

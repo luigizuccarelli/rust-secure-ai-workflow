@@ -1,6 +1,6 @@
 [package]
 name = "secure-ai-workflow"
-version = "0.4.4"
+version = "0.5.0"
 authors = ["Luigi Mario Zuccarelli<>luigizuccarelli@gmail.com"]
 edition = "2021"
 
@@ -29,6 +29,8 @@ chrono = "0.4.41"
 async-trait = "0.1.89"
 surrealkv = "0.10.1"
 hyper-tls = "0.6.0"
+native-tls = "0.2.14"
+tokio-native-tls = "0.3.1"
 
 
 [profile.release]

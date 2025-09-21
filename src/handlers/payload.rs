@@ -5,6 +5,7 @@ use http_body_util::{BodyExt, Full};
 use hyper::body::Bytes;
 use hyper::{Method, Request, Uri};
 use hyper_tls::HttpsConnector;
+use hyper_util::client::legacy::connect::HttpConnector;
 use hyper_util::client::legacy::Client;
 use hyper_util::rt::TokioExecutor;
 use serde_derive::{Deserialize, Serialize};
@@ -90,7 +91,14 @@ async fn process_token(
     user: String,
     base_url: String,
 ) -> Result<String, Box<dyn std::error::Error>> {
-    let https = HttpsConnector::new();
+    let mut http_connector = HttpConnector::new();
+    http_connector.enforce_http(false);
+
+    let native_tls_connector = native_tls::TlsConnector::builder()
+        .danger_accept_invalid_certs(true)
+        .build()?;
+    let tls_connector = tokio_native_tls::TlsConnector::from(native_tls_connector);
+    let https = HttpsConnector::from((http_connector, tls_connector));
     let client: Client<_, Full<Bytes>> = Client::builder(TokioExecutor::new()).build(https);
     if base_url == "" {
         return Err(Box::from(format!("{}:token url not set", 422)));
@@ -112,6 +120,7 @@ async fn process_token(
         let future = client.request(req).await?;
         let response = future.into_body().collect().await?.to_bytes();
         let token: Token = serde_json::from_slice(&response)?;
+
         return Ok(token.access_token);
     }
 }
