@@ -52,6 +52,7 @@ impl PayloadInterface for Payload {
                 let token = process_token(v.credentials.clone(), token_url.clone()).await?;
                 te.spec.token = token;
                 te.spec.key = String::from_utf8(k.to_vec())?;
+                te.spec.nodes[0].user = v.credentials;
                 payload = serde_json::to_string(&te)?;
             } else {
                 return Err(get_box_error(format!(
