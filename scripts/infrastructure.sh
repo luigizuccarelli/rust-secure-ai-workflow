@@ -23,7 +23,7 @@ tee config/${MS}-config.json <<EOF
 	"agents": {
 		"simple-ai-agent": "/home/${USER}/services/rust-simple-agent",
 		"gemini-ai-agent": "/home/${USER}/services/gemini-ai-agent",
-		"llama3b-ai-agent": "/home/${USER}/services/llama3b-ai-agent",
+		"llama-ai-agent": "/home/${USER}/services/llama-ai-agent",
 		"rust-coding-agent": "/home/${USER}/services/rust-coding-agent",
 		"demo-agent": "/home/lzuccarelli/${USER}/demo-agent"
 	}

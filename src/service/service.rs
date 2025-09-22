@@ -66,10 +66,9 @@ pub async fn task_service(req: Request<Incoming>) -> Result<Response<Full<Bytes>
             if req_uri.contains("execute-agent") {
                 let result = aggregate(data.as_ref());
                 match result {
-                    Ok(value) => {
+                    Ok(payload) => {
                         *response.status_mut() = StatusCode::OK;
-                        *response.body_mut() =
-                            Full::from(get_response("ok".to_owned(), format!("{}", value)));
+                        *response.body_mut() = Full::from(payload);
                     }
                     Err(e) => {
                         *response.status_mut() = StatusCode::INTERNAL_SERVER_ERROR;
