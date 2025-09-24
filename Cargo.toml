@@ -1,6 +1,6 @@
 [package]
 name = "secure-ai-workflow"
-version = "0.5.2"
+version = "0.5.3"
 authors = ["Luigi Mario Zuccarelli<>luigizuccarelli@gmail.com"]
 edition = "2021"
 

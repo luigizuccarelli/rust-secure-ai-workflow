@@ -12,6 +12,7 @@
 		"simple-ai-agent": "/home/lzuccarelli/services/rust-simple-agent",
 		"gemini-ai-agent": "/home/lzuccarelli/services/gemini-ai-agent",
 		"llama-ai-agent": "/home/lzuccarelli/services/llama-ai-agent",
+		"vllm-ai-agent": "/home/lzuccarelli/services/vllm-ai-agent",
 		"rust-coding-agent": "/home/lzuccarelli/services/rust-coding-agent",
 		"demo-agent": "/home/lzuccarelli/lzuccarelli/demo-agent"
 	}
